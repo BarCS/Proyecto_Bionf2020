@@ -1,5 +1,13 @@
-#**README**
-#***Bárbara Cruz Salazar***
+#README
+**Bárbara Cruz Salazar**
 
-# Final project
+## Final project
 
+### Data
+Los datos utilizados para la primer parte del análisis fueron los publicados por Rochette et al. (2017). Estos constituyen tres líneas de de RADseq usando la enzima de restricción SbfI. Para la segunda parte del análisis (observación por gráficas de las variantes), se utilizó un subconjunto de datos de Rochette et al. (2017), que únicamente fue 1 de las tres líneas disponibles. En la carpeta `data`se encuentra el archivo `n_sps_per_locus.tsv`que es el que se utilizó para hacer las gráficas.
+
+### Meta
+En la carpeta `meta`se encuentra un archivo `tsv`que contiene la procedencia de cada una de las muestras.
+
+### Bin
+Finalmente, en la carpeta `bin`están dos scripts. El primero (`Script1.sh`) es el procedimiento para descargar las secuencias y observar la calidad de las mismas. El segundo (`Script2.Rmd`) muestra los comandos para visualizar el número de loci y snps con la variación del parámetro n= 1-3, manteniendo a M=2 y m=3.
