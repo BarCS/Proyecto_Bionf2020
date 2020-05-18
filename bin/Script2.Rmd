@@ -1,0 +1,88 @@
+---
+title: "ProyectoFinal"
+author: "Bárbara Cruz Salazar"
+date: "5/14/2020"
+output: html_document
+---
+
+## Call libraries
+## Read data
+
+```{r eval=TRUE, echo=TRUE}
+## Call library
+library(tidyr)
+library(ggplot2)
+snps_loc <- read.table("../data/n_snps_per_locus.tsv", sep = ',', header = TRUE)
+## with sep I can read each variable in a column
+
+```
+
+## Plot for see the number of loci per n in boxplot
+
+```{r eval=TRUE, echo=TRUE}
+ggplot(data = snps_loc, aes(x = factor(n), y = n_loci)) + 
+  geom_jitter(aes(color = factor(n)), size = 1, alpha = 0.7) +
+  geom_boxplot(aes(color = factor(n)), alpha = 0.7) + 
+  xlab("n") + 
+  ylab("Number of loci") +
+  ggtitle("Loci") + 
+  theme_minimal()
+```
+## Plot for see the number of snps per n in boxplot
+
+```{r eval=TRUE, echo=TRUE}
+ggplot(data = snps_loc, aes(x = factor(n), y = n_snps)) + 
+  geom_jitter(aes(color = factor(n)), size = 1, alpha = 0.7) +
+  geom_boxplot(aes(color = factor(n)), alpha = 0.7) + 
+  xlab("n") + 
+  ylab("Number of snps") +
+  ggtitle("Snps per locus") + 
+  theme_minimal()
+```
+
+## Plot for see the number of loci per n, in barplot
+
+```{r eval=TRUE, echo=TRUE}
+ggplot(snps_loc, aes(x=factor(n), y=n_loci, fill=factor(n))) + 
+  geom_bar(aes(fill=factor(n)), stat="identity", position= "identity") + 
+  xlab("n") + 
+  ylab("Number of loci") +
+  ggtitle("Loci") 
+
+
+```
+
+## Plot for see the number of snps per n, in barplot
+
+```{r eval=TRUE, echo=TRUE}
+ggplot(snps_loc, aes(x=factor(n), y=n_snps, fill=factor(n))) + 
+  geom_bar(aes(fill=factor(n)), stat="identity", position= "identity") + 
+  xlab("n") + 
+  ylab("Number of snps") +
+  ggtitle("Snps per locus") 
+
+```
+
+## Plot for see the number of loci and snps per n, in barplot
+
+```{r eval=TRUE, echo=TRUE}
+ggplot(snps_loc, aes(x=factor(n), y=n_loci, fill="n")) + 
+  geom_bar(aes(fill=factor(n)), stat="identity", position= "identity") + 
+  xlab("n") + 
+  ylab("Number of variants") +
+  ggtitle("Snps and loci") +
+  facet_grid(factor(n) ~ n_snps) ## Para tener los dos
+
+```
+
+## Plot for see the number of loci and snps per n, in barplot
+
+```{r eval=TRUE, echo=TRUE}
+ggplot(snps_loc, aes(x=factor(n), y=n_loci)) + 
+  geom_bar(aes(), stat="identity", position= "identity") + 
+   xlab("n") + 
+  ylab("Number of variants") +
+  ggtitle("Snps and loci") +
+  facet_grid(n_snps ~ .) ## Para tener los dos
+```
+

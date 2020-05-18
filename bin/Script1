@@ -1,0 +1,95 @@
+# Final proyect
+# Bárbara Cruz Salazar
+
+## Download data
+wget http://catchenlab.life.illinois.edu/data/rochette2017_gac_or.tar.gz -P ../data
+
+-P indicate the directory where it will keep the file
+
+## Decompress
+
+tar -xzvf ../data/rochette2017_gac_or.tar.gz -C ../data
+
+-x extract files from an archive
+-z filter the archive through gzip
+-v verbosely list files processed
+-f input file
+-C change directory
+
+## Copy barcodes and popmap files to meta directory
+cp ../data/rochette2017_gac_or/top/info/*.tsv ../meta
+
+## Do directorys to copy sequences from raw to data directory
+## Do variable
+values="1 2 3 "
+
+for values in $values ;do
+	mkdir -p ../data/lane$values
+done
+
+## Copy sequences to data directory
+## Do variable
+values="1 2 3 "
+
+for values in $values ;do
+	cp ../data/rochette2017_gac_or/top/raw/lane$values/lane* ../data/lane$values
+done
+
+## Review the data quality
+## Do variables
+values="1 2 3 "
+data_dir=../data
+
+for values lane$values ;do
+  echo "lane$values:"
+	zcat $data_dir/lane$values/*.fq.gz | head -n 20
+done
+
+
+i="1 2 3"
+data_dir=../data
+for i in lane{1..3} ;do
+  echo "$i"
+  zcat $data_dir/$i/*.fq.gz | head -n 20
+  done
+
+## `i`in `for`it aplicated to `lane`, so i= lane1, lane2, lane3
+
+
+## Individually
+zcat ../data/lane1/*.fq.gz | head -n 20
+zcat ../data/lane2/*.fq.gz | head -n 20
+zcat ../data/lane3/*.fq.gz | head -n 20
+
+## Decompress fq.gz files to using fastqc. Also, fastqc can work with fq.gz files, so this step is not necessary.
+### Do variables
+reads_dir=../data
+i="i 2 3"
+
+### Loop
+for i in lane{1..3} ;do
+	echo "$i"
+  gzip -d $reads_dir/$i/*.fq.gz
+done
+
+## Using fastqc
+### Do variables
+reads_dir=../data
+i="i 2 3"
+
+### Loop
+for i in lane{1..3} ;do
+	echo "$i"
+  fastqc $reads_dir/$i/*.fq -o ../data
+done
+
+
+## Trimming
+### Do variables
+reads_dir=../data
+
+### Loop
+for i in lane{1..3} ;do
+	echo "$i"
+  fastqc $reads_dir/$i/*filter.fq -o ../data
+done
