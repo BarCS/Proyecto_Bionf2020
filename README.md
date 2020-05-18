@@ -14,4 +14,4 @@ In the `meta` folder is a` tsv` file containing the provenance of each sample.
 Finally, there are two scripts in the `bin` folder. The first (`Script1.sh`) is the procedure for downloading the sequences and observing their quality. The second (`Script2.Rmd`) shows the commands to display the number of loci and snps with the variation of parameter n = 1-3, keeping M = 2 and m = 3.
 
 ### Análisis 
-Data analysis is found in [Discussion](https://github.com/BarCS/Enlaces/blob/master/Discussion%20.md) and [html of second part](file:///Users/barbaracruz-salazar/Desktop/BioinfinvRepro_viejo/Tareas_BCS/ProyectoFinal/bin/Script2.html)
+Data analysis is found in [Discussion](https://github.com/BarCS/Enlaces/blob/master/Discussion%20.md) and [html](file:///Users/barbaracruz-salazar/Desktop/BioinfinvRepro_viejo/Tareas_BCS/ProyectoFinal/bin/Script2.html)
